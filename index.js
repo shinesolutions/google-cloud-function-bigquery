@@ -1,12 +1,10 @@
 exports.fakingItWithGCS = function(event, callback) {
   const file = event.data;
-  console.log("File is ", file);
   if (
     file.resourceState === "exists" &&
     file.name &&
     file.name.indexOf("trigger/") !== -1
   ) {
-    console.log("Called!");
 
     const bigquery = require('@google-cloud/bigquery')();
     const query =
@@ -23,9 +21,9 @@ exports.fakingItWithGCS = function(event, callback) {
       },
       function(err, job) {
         if (err) {
-          console.error("Error: ", err);
+          console.error("Something went wrong. Error: ", err);
         }
-        console.log("All good: " + job);
+        console.log("BigQuery job successfuly submitted");
         callback();
       }
     );
