@@ -23,7 +23,7 @@ exports.fakingItWithGCS = function(event, callback) {
         if (err) {
           console.error("Something went wrong. Error: ", err);
         }
-        console.log("BigQuery job successfuly submitted");
+        console.log("BigQuery job successfully submitted");
         callback();
       }
     );
